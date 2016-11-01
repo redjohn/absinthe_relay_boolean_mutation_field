@@ -5,10 +5,6 @@
 # is restricted to this project.
 use Mix.Config
 
-# General application configuration
-config :boolean_fields,
-  ecto_repos: [BooleanFields.Repo]
-
 # Configures the endpoint
 config :boolean_fields, BooleanFields.Endpoint,
   url: [host: "localhost"],

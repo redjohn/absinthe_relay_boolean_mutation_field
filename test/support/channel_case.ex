@@ -21,9 +21,6 @@ defmodule BooleanFields.ChannelCase do
       use Phoenix.ChannelTest
 
       alias BooleanFields.Repo
-      import Ecto
-      import Ecto.Changeset
-      import Ecto.Query
 
 
       # The default endpoint for testing
@@ -32,12 +29,6 @@ defmodule BooleanFields.ChannelCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(BooleanFields.Repo)
-
-    unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(BooleanFields.Repo, {:shared, self()})
-    end
-
     :ok
   end
 end

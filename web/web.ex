@@ -16,23 +16,11 @@ defmodule BooleanFields.Web do
   below.
   """
 
-  def model do
-    quote do
-      use Ecto.Schema
-
-      import Ecto
-      import Ecto.Changeset
-      import Ecto.Query
-    end
-  end
-
   def controller do
     quote do
       use Phoenix.Controller
 
       alias BooleanFields.Repo
-      import Ecto
-      import Ecto.Query
 
       import BooleanFields.Router.Helpers
       import BooleanFields.Gettext
@@ -66,8 +54,6 @@ defmodule BooleanFields.Web do
       use Phoenix.Channel
 
       alias BooleanFields.Repo
-      import Ecto
-      import Ecto.Query
       import BooleanFields.Gettext
     end
   end

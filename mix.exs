@@ -9,7 +9,6 @@ defmodule BooleanFields.Mixfile do
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     aliases: aliases(),
      deps: deps()]
   end
 
@@ -19,7 +18,7 @@ defmodule BooleanFields.Mixfile do
   def application do
     [mod: {BooleanFields, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :absinthe, :absinthe_plug]]
+                    :absinthe, :absinthe_plug]]
   end
 
   # Specifies which paths to compile per environment.
@@ -32,28 +31,14 @@ defmodule BooleanFields.Mixfile do
   defp deps do
     [ {:phoenix, "~> 1.2.1"},
       {:phoenix_pubsub, "~> 1.0"},
-      {:phoenix_ecto, "~> 3.0"},
-      {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.6"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
-      {:absinthe, "~> 1.1.0"},
-      {:absinthe_plug, "~> 1.1"},
-      {:absinthe_relay, "~> 0.9.2"},
+      {:absinthe, git: "https://github.com/absinthe-graphql/absinthe.git", ref: "v1.2", override: true},
+      {:absinthe_plug, git: "https://github.com/absinthe-graphql/absinthe_plug.git", ref: "v1.2"},
+      {:absinthe_relay, git: "https://github.com/absinthe-graphql/absinthe_relay.git", ref: "v1.2", override: true},
       {:poison, "~> 2.0"},
     ]
-  end
-
-  # Aliases are shortcuts or tasks specific to the current project.
-  # For example, to create, migrate and run the seeds file at once:
-  #
-  #     $ mix ecto.setup
-  #
-  # See the documentation for `Mix` for more info on aliases.
-  defp aliases do
-    ["ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
-     "ecto.reset": ["ecto.drop", "ecto.setup"],
-     "test": ["ecto.create --quiet", "ecto.migrate", "test"]]
   end
 end

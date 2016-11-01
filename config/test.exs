@@ -9,11 +9,3 @@ config :boolean_fields, BooleanFields.Endpoint,
 # Print only warnings and errors during test
 config :logger, level: :warn
 
-# Configure your database
-config :boolean_fields, BooleanFields.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "boolean_fields_test",
-  hostname: "localhost",
-  pool: Ecto.Adapters.SQL.Sandbox

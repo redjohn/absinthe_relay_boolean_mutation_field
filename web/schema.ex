@@ -35,5 +35,14 @@ defmodule BooleanFields.Schema do
       end
       resolve &Resolver.User.create/2
     end
+
+    field :other_create_user, type: :user do
+      arg :name, non_null(:string)
+      arg :admin, non_null(:boolean)
+      resolve fn args, ctx ->
+        with {:ok, user} <- Resolver.User.create(args, ctx),
+          do: {:ok, user[:user]}
+      end
+    end
   end
 end

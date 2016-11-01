@@ -13,6 +13,10 @@ defmodule BooleanFields.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :graphql do
+    plug GraphqlLogger
+  end
+
   scope "/", BooleanFields do
     pipe_through :browser # Use the default browser stack
 
@@ -20,6 +24,7 @@ defmodule BooleanFields.Router do
   end
 
   if Mix.env == :dev do
+    pipe_through :graphql
     forward "/docs", Absinthe.Plug.GraphiQL, schema: BooleanFields.Schema
   end
 end
