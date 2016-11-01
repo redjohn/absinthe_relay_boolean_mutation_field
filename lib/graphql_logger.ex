@@ -9,8 +9,15 @@ defmodule GraphqlLogger do
   def init(opts), do: opts
 
   def call(conn, _) do
-    vars = (conn |> Map.get(:body_params) |> Map.get("variables"))
-    Logger.info("Variables: #{inspect(vars)}")
+    if Mix.env != :test do
+      vars = (conn |> Map.get(:body_params) |> Map.get("variables"))
+      printable_vars = if vars && String.trim(vars) != "" do
+        inspect(Poison.decode!(vars))
+      else
+        ""
+      end
+      Logger.info("Variables: #{printable_vars}")
+    end
     conn
   end
 end
