@@ -5,7 +5,8 @@ defmodule BooleanFields.Resolver.User do
 
   def get(_, _), do: {:ok, @user}
 
-  def create(%{name: name, admin: admin}, _) do
+  def create(%{name: name, admin: admin} = args, _) do
+    Logger.info "args for create: #{inspect(args)}"
     {:ok, %{user: %{id: "2", name: name, admin: admin}}}
   end
 
