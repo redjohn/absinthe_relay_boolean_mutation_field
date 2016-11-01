@@ -35,9 +35,9 @@ defmodule BooleanFields.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
-      {:absinthe, git: "https://github.com/absinthe-graphql/absinthe.git", ref: "v1.2", override: true},
-      {:absinthe_plug, git: "https://github.com/absinthe-graphql/absinthe_plug.git", ref: "v1.2"},
-      {:absinthe_relay, git: "https://github.com/absinthe-graphql/absinthe_relay.git", ref: "v1.2", override: true},
+      {:absinthe, "~> 1.1.0"},
+      {:absinthe_plug, "~> 1.1"},
+      {:absinthe_relay, "~> 0.9.2"},
       {:poison, "~> 2.0"},
     ]
   end
