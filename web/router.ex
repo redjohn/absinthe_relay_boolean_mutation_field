@@ -23,6 +23,12 @@ defmodule BooleanFields.Router do
     get "/", PageController, :index
   end
 
+  scope "/graphql" do
+    pipe_through :graphql
+    get "/", Absinthe.Plug, schema: BooleanFields.Schema
+    post "/", Absinthe.Plug, schema: BooleanFields.Schema
+  end
+
   if Mix.env == :dev do
     pipe_through :graphql
     forward "/docs", Absinthe.Plug.GraphiQL, schema: BooleanFields.Schema
